@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1484877790 source:/home/cebox/codigo/c++/lista-cbp/main.cpp
+	"lista.h"
+
+1484877673 source:/home/cebox/codigo/c++/lista-cbp/src/lista.cpp
+	"lista.h"
+
+1484877633 /home/cebox/codigo/c++/lista-cbp/include/lista.h
+	<iostream>
+
