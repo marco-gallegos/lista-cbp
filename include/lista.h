@@ -50,6 +50,7 @@ public:
     //regresara el dato que busca
     DATO buscar(DATO &a_buscar);
 
+    void actualizar(DATO a_actualizar, DATO nuevo);
     void mostrar();
     int tamano();
     void iterar();
@@ -262,6 +263,15 @@ template<class DATO> void Lista<DATO>::mostrar()
     cout<<endl;
 }
 
-
+template<class DATO> void Lista<DATO>::actualizar(DATO a_actualizar, DATO nuevo){
+    Nodo<DATO> *it = this->head;
+    while(it->valor != a_actualizar){
+        it = it->siguiente;
+    }
+    if(it->valor != a_actualizar){
+        return;
+    }
+    it->valor = nuevo;
+}
 
 #endif // LISTA

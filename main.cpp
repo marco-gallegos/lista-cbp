@@ -5,15 +5,16 @@ int main()
 {
     Lista<string> mi_lista;
     //hardcodenado como pro :v
-    //mi_lista.insertar("hola");
+    mi_lista.insertar("hola");
     //mi_lista.insertar("hola2");
     //mi_lista.insertar("hola3");
     int opc = 1, pos_eliminar;
     string para_insertar;
     string para_eliminar;
+    string para_buscar,nuevo_str;
     while(opc != 6)
     {
-        cout<<"1 - insertar 2 - eliminar 3 - ver 4 - iterar 6 - salir "<<endl;
+        cout<<"1 - insertar 2 - eliminar 3 - ver 4 - iterar 5 - actualizar 7 - salir "<<endl;
         cin>>opc;cin.ignore();
         switch (opc) {
         case 1:
@@ -43,6 +44,16 @@ int main()
             break;
         case 3:
             mi_lista.mostrar();
+            break;
+        case 4:
+            mi_lista.iterar();
+            break;
+        case 5:
+            cout<<"valor a actualizar : ";
+            getline(cin,para_buscar);
+            cout<<"valor nuevo        : ";
+            getline(cin,nuevo_str);
+            mi_lista.actualizar(para_buscar, nuevo_str);
             break;
         default:
             cout<<"opcion invalida ";
