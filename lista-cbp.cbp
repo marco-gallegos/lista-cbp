@@ -34,8 +34,10 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/Paciente.h" />
 		<Unit filename="include/lista.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Paciente.cpp" />
 		<Unit filename="src/lista.cpp" />
 		<Extensions>
 			<envvars />

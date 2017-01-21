@@ -49,7 +49,7 @@ public:
     bool eliminar();
     //regresara el dato que busca
     DATO buscar(DATO &a_buscar);
-
+    //remplaza el valor de a_actualizar por nuevo si lo encuentra
     void actualizar(DATO a_actualizar, DATO nuevo);
     void mostrar();
     int tamano();
@@ -139,6 +139,7 @@ template<class DATO> bool Lista<DATO>::eliminar(unsigned int pos)
     //validar pos
     if(pos > *tam || *tam == 0 || pos < 1 )
     {
+        cout<<"no existe posicion"<<endl;
         return false;
     }
     if(pos == 1 && this->head->siguiente == NULL)
@@ -265,7 +266,7 @@ template<class DATO> void Lista<DATO>::mostrar()
 
 template<class DATO> void Lista<DATO>::actualizar(DATO a_actualizar, DATO nuevo){
     Nodo<DATO> *it = this->head;
-    while(it->valor != a_actualizar){
+    while(it->valor != a_actualizar && it->siguiente != NULL){
         it = it->siguiente;
     }
     if(it->valor != a_actualizar){
