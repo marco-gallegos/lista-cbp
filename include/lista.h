@@ -1,6 +1,7 @@
 #ifndef LISTA
 #define LISTA
 #include<iostream>
+#include<Paciente.h>
 
 using namespace std;
 
@@ -37,8 +38,11 @@ public:
     //
     Nodo<DATO> *it;
 
-    Lista():head(NULL),it(NULL){}
+    Lista():head(NULL),it(NULL),limite(15),registros(0){}
     ~Lista(){}
+
+    int limite;
+    int registros;
 
     void insertar(DATO a_insertar);
     //elimina el elemnto del tipo "class Dato" que le pases a la funcion
@@ -51,7 +55,9 @@ public:
     DATO buscar(DATO &a_buscar);
     //remplaza el valor de a_actualizar por nuevo si lo encuentra
     void actualizar(DATO a_actualizar, DATO nuevo);
+    void actualizar(int nrr);
     void mostrar();
+    void mostrar(int pos);
     int tamano();
     void iterar();
 
@@ -75,19 +81,23 @@ template<class DATO> int Lista<DATO>::tamano()
 
 template<class DATO> void Lista<DATO>::insertar(DATO a_insertar)
 {
-    if(this->head == NULL)
-    {
+    if(this->registros == this->limite){
+        cout<<"limite lcanzado"<<endl;
+        return;
+    }
+    if(this->head == NULL){
         head = new Nodo<DATO>(a_insertar);
+        this->registros++;
         return;
     }
 
     Nodo<DATO> *iterador= this->head;
 
-    while(iterador->siguiente != NULL)
-    {
+    while(iterador->siguiente != NULL){
         iterador = iterador->siguiente;
     }
     iterador->siguiente = new Nodo<DATO>(a_insertar,iterador);
+    this->registros++;
     return;
 
 }
@@ -179,6 +189,7 @@ template<class DATO> bool Lista<DATO>::eliminar(unsigned int pos)
     //el apuntador que lleva a iterador ahora apuntara a el nodo siguiente de iterador
     anterior->siguiente = iterador->siguiente;
     delete iterador;
+    registros--;
     return true;
 
 }
@@ -204,6 +215,7 @@ template<class DATO> bool Lista<DATO>::eliminar()
     }
     anterior->siguiente = NULL;
     delete iterador;
+    registros--;
     return true;
 
 
@@ -273,6 +285,79 @@ template<class DATO> void Lista<DATO>::actualizar(DATO a_actualizar, DATO nuevo)
         return;
     }
     it->valor = nuevo;
+}
+
+template<class DATO> void Lista<DATO>::mostrar(int pos){
+    if(this->head == NULL)
+    {
+        cout<<"lista vacia"<<endl;
+        return;
+    }
+    int cont=1;
+    Nodo<DATO> *iterador= this->head;
+    while(iterador->siguiente != NULL && pos != cont && cont<=pos)
+    {
+        //cout<<iterador->valor<<" ";
+        iterador=iterador->siguiente;
+        cont++;
+    }
+    if(cont != pos && (iterador->siguiente == NULL || iterador == NULL)){
+        cout<<"posicion invalida"<<endl;
+        return;
+    }
+    cout<<iterador->valor<<endl;
+
+}
+
+template<class DATO> void Lista<DATO>::actualizar(int nrr){
+    Nodo<DATO> *iterador= this->head;
+    if(nrr > 15 || nrr > this->registros)
+    {
+        cout<<"exede el limite de registros"<<endl;
+        return ;
+    }
+    if(this->head == NULL){
+        cout<<"lista vacia"<<endl;
+        return;
+    }
+    int contador = 1;
+    while(contador < nrr && iterador->siguiente != NULL){
+        iterador = iterador->siguiente;
+        contador++;
+    }
+    if(nrr != contador){
+        cout<<"no existe"<<endl;
+        return;
+    }
+    Paciente aux;
+    cout<<iterador->valor<<endl;
+    cout<<"que datos actualizaras "<<endl;
+    int opc = 0;
+    while(opc != 7){
+        cout<<"1 - nombre 2 - edad 3 - nss 4 - padecimiento 5 - todo 7 - finalizar"<<endl;
+        cin>>opc;cin.ignore();
+        switch(opc){
+            case 1:
+                getline(cin,iterador->valor.nombre);
+                break;
+            case 2:
+                cin>>iterador->valor.edad;
+                break;
+            case 3:
+                getline(cin,iterador->valor.nss);
+                break;
+            case 4:
+                getline(cin,iterador->valor.nombre);
+                break;
+            case 5:
+                cin>>aux;
+                iterador->valor = aux;
+                break;
+            default:
+                break;
+        }
+    }
+
 }
 
 #endif // LISTA

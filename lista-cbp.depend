@@ -1,18 +1,19 @@
 # depslib dependency file v1.0
-1484980400 source:/home/cebox/codigo/c++/lista-cbp/main.cpp
+1485211444 source:/home/cebox/codigo/c++/lista-cbp/main.cpp
 	"lista.h"
 	"Paciente.h"
 
 1484877673 source:/home/cebox/codigo/c++/lista-cbp/src/lista.cpp
 	"lista.h"
 
-1484980935 /home/cebox/codigo/c++/lista-cbp/include/lista.h
+1485318821 /home/cebox/codigo/c++/lista-cbp/include/lista.h
 	<iostream>
+	<Paciente.h>
 
-1484979760 /home/cebox/codigo/c++/lista-cbp/include/Paciente.h
+1484981112 /home/cebox/codigo/c++/lista-cbp/include/Paciente.h
 	<iostream>
 	<string>
 
-1484980678 source:/home/cebox/codigo/c++/lista-cbp/src/Paciente.cpp
+1484981112 source:/home/cebox/codigo/c++/lista-cbp/src/Paciente.cpp
 	"Paciente.h"
 

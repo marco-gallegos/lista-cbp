@@ -8,13 +8,13 @@ int main()
     //mi_lista.insertar("hola");
     //mi_lista.insertar("hola2");
     //mi_lista.insertar("hola3");
-    int opc = 1, pos_eliminar;
+    int opc = 1, pos_eliminar,pos_buscar;
     Paciente para_insertar;
     Paciente para_eliminar;
     Paciente para_buscar,nuevo_val;
     while(opc != 6)
     {
-        cout<<"1 - insertar 2 - eliminar 3 - ver 4 - iterar 5 - actualizar 7 - salir "<<endl;
+        cout<<"1 - insertar 2 - eliminar 3 - buscar 4 - iterar 5 - actualizar 7 - salir "<<endl;
         cin>>opc;cin.ignore();
         switch (opc) {
         case 1:
@@ -45,12 +45,15 @@ int main()
 
             break;
         case 3:
-            mi_lista.mostrar();
+            cout<<"posicion"<<endl;
+            cin>>pos_buscar;
+            mi_lista.mostrar(pos_buscar);
             break;
         case 4:
             mi_lista.iterar();
             break;
         case 5:
+            /*
             cout<<"valor a actualizar : ";
             //getline(cin,para_buscar);
             cin>>para_buscar;
@@ -58,6 +61,10 @@ int main()
             //getline(cin,nuevo_str);
             cin>>nuevo_val;
             mi_lista.actualizar(para_buscar, nuevo_val);
+            */
+            cout<<"dame el nrr"<<endl;
+            cin>>pos_buscar;cin.ignore();
+            mi_lista.actualizar(pos_buscar);
             break;
         default:
             cout<<"opcion invalida ";
